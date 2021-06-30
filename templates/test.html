@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><img style="max-width:75px; margin-top: -12px;" src="{% static 'logo/wearmeup.png'%}"> </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-6 mb-md-2">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            {% if request.user.is_authenticated %}   
+            <a class="btn btn-secondary  dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">Hi, {{ request.user.username | title}}</a>
+
+
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'users:logout' %}">logout</a></li>
+                <li><a class="dropdown-item" href="#">edit profile</a></li>
+                <li><a class="dropdown-item" href="#">my orders</a></li>
+
+
+            </div>                
+            {% else %}
+            <a class="nav-link active bg-dark" href="{% url 'users:login' %}" tabindex="-1" aria-current="location" >login</a>
+            {% endif %}
+        </li>
+        </ul>
+        
+      
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+         
+        
+      
+        <form class="d-flex">
+
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
